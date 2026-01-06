@@ -9,11 +9,6 @@ add_action('wp_enqueue_scripts', function () {
 add_theme_support('title-tag');
 add_theme_support('post-thumbnails');
 
-function mounty_theme_setup() {
-    load_theme_textdomain('mounty-theme', get_template_directory() . '/languages');
-}
-add_action('after_setup_theme', 'mounty_theme_setup');
-
 add_action('init', function () {
   remove_action('wp_head', 'rsd_link');
   remove_action('wp_head', 'wlwmanifest_link');
@@ -24,18 +19,6 @@ add_action('init', function () {
   remove_action('wp_head', 'print_emoji_detection_script', 7);
   remove_action('wp_print_styles', 'print_emoji_styles');
   remove_action('wp_head', 'wp_oembed_add_discovery_links');
-});
-
-add_action('wp_head', function () {
-  ?>
-  <link
-    rel="preload"
-    href="<?= get_template_directory_uri(); ?>/assets/fonts/tt-firs-neue-700.woff2"
-    as="font"
-    type="font/woff2"
-    crossorigin
-  >
-  <?php
 });
 
 add_action('wp_head', function () {
@@ -74,3 +57,45 @@ add_action('wp_head', function () {
        wp_json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) .
        '</script>';
 });
+
+function mounty_theme_setup() {
+  load_theme_textdomain('mounty-theme', get_template_directory() . '/languages');
+}
+add_action('after_setup_theme', 'mounty_theme_setup');
+
+function get_languages_example(): array {
+  return [
+    'uk' => [
+        'active' => 1,
+        'native_name' => 'УКР',
+        'url' => '/',
+    ],
+    'en' => [
+        'active' => 0,
+        'native_name' => 'ENG',
+        'url' => '/en',
+    ],
+  ];
+}
+
+function get_icon_examples(): array {
+  return [
+    'instagram' => '#',
+    'facebook' => '#',
+    'whatsapp' => '#',
+    'telegram' => '#',
+    'twitter' => '#',
+    'youtube' => '#',
+    'tiktok' => '#',
+  ];
+}
+
+function get_menu_examples(): array {
+ return [
+  'Ціни'=> '#',
+  'Про Маунті'=> '#',
+  'Спорядження'=> '#',
+  'Маршрути'=> '#',
+  'FAQ'=> '#',
+ ];
+}

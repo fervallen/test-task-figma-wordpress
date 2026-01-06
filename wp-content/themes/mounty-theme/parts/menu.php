@@ -1,6 +1,4 @@
-<? //would be done with wp_nav_menu() ?>
-<a href="#"><?= __('Ціни') ?></a>
-<a href="#"><?= __('Про маунти') ?></a>
-<a href="#"><?= __('Спорядження') ?></a>
-<a href="#"><?= __('Маршрути') ?></a>
-<a href="#"><?= __('FAQ') ?></a>
+<?php //should be done with wp_nav_menu() ?>
+<?php foreach(get_menu_examples() as $name => $url): ?>
+  <a href="<?= esc_url($url) ?>"><?= __($name) ?></a>
+<?php endforeach ?>

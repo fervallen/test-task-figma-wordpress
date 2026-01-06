@@ -1,11 +1,12 @@
 services:
   wordpress:
-    image: wordpress:6.5-php8.2-apache
+    image: wordpress:6.9-php8.3-apache
     ports:
       - "8080:80"
     volumes:
       - ../:/var/www/html
     environment:
+      # Should not be here in a real environment
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_NAME: wp
       WORDPRESS_DB_USER: wp
