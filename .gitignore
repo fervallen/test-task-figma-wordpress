@@ -1,3 +1,5 @@
 *
 !docker
 !wp-content/themes/mounty-theme
+!favicon.ico
+!README.md

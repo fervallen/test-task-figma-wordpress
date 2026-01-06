@@ -26,7 +26,7 @@
 <body <?php body_class('bg-black text-white overflow-x-hidden') ?>>
 
 <!-- DESKTOP LEFT MENU -->
-<header class="w-full flex flex-row p-4 fixed">
+<header class="w-full flex flex-row p-4 fixed max-lg:w-full max-lg:justify-between z-50">
   <div class="lg:w-1/2 flex flex-row">
     <!-- LOGO -->
     <div class="mounty-logo lg:w-1/3 lg:pt-1">
@@ -34,7 +34,7 @@
     </div>
 
     <!-- MAIN TITLE -->
-    <div class="!lg:hidden tektur text-[14px] leading-5 w-2/3">
+    <div class="max-lg:hidden tektur text-[14px] leading-5 w-2/3">
       <span class="max-w-[210px] inline-block">
         <?= __('Сервіс подорожей кращими місцями карпат', 'mounty') ?>
       </span>
@@ -43,7 +43,7 @@
 
   <div class="lg:w-1/2 flex flex-row justify-between">
     <!-- DESKTOP SOCIAL LINKS -->
-    <div class="flex flex-row gap-4 !lg:hidden">
+    <div class="flex flex-row gap-4 max-lg:hidden">
       <?php foreach (get_icon_examples() as $icon => $url): ?>
         <a
           href="<?= esc_url($url) ?>"
@@ -63,7 +63,7 @@
 
     <!-- LANGUAGE SWITCHER (DESKTOP) -->
     <?php if (function_exists('get_languages_example')): //icl_get_languages ?>
-        <div class="text-xs uppercase tracking-wide space-x-1 !lg:hidden">
+        <div class="text-xs uppercase tracking-wide space-x-1 max-lg:hidden">
           <?php foreach (get_languages_example() as $language): ?>
             <a
               href="<?= esc_url($language['url']) ?>"
@@ -81,11 +81,11 @@
       id="burger"
       class="
         lg:hidden
-        w-10 h-10
-        border border-white
-        background-red
+        w-8 h-8
+        bg-[#DD3030]
         flex items-center justify-center
         text-lg
+        cursor-pointer
       "
       aria-label="<?= esc_attr__('Open menu', 'mounty') ?>"
       aria-expanded="false"
@@ -109,7 +109,7 @@
   "
 >
   <!-- NAV -->
-  <nav class="space-y-6 text-2xl uppercase">
+  <nav class="space-y-6 text-2xl uppercase flex flex-col mt-12">
     <?php get_template_part('parts/menu') ?>
   </nav>
 

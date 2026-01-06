@@ -1,21 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
     const burger = document.getElementById('burger');
     const menu = document.getElementById('mobileMenu');
-  
     if (!burger || !menu) return;
   
-    const tl = gsap.timeline({ paused: true });
-    tl.fromTo(menu, { x: '100%' }, { x: '0%', duration: 0.4, ease: 'power2.out' });
+    const menuTimeLine = gsap.timeline({ paused: true });
+    const burgerTimeLine = gsap.timeline({
+      paused: true,
+      onReverseComplete: () => {
+        burger.textContent = "☰";
+      },
+      onComplete: () => {
+        burger.textContent = "X";
+      }
+    });
+    
+    menuTimeLine.fromTo(menu, { x: '100%' }, { 
+      x: '0%', 
+      duration: 0.5, 
+      ease: 'power2.out',
+    });
+    burgerTimeLine.fromTo(burger, { backgroundColor: '#DD3030' }, { 
+      backgroundColor: '#000', 
+      duration: 0.5,
+    });
   
     let open = false;
-  
     burger.addEventListener('click', () => {
       if (!open) {
         menu.classList.remove('hidden');
-        tl.play(0);
+        menuTimeLine.play(0);
+        burgerTimeLine.play(0);
       } else {
-        tl.reverse();
-        setTimeout(() => menu.classList.add('hidden'), 400);
+        setTimeout(() => menu.classList.add('hidden'), 500);
+        menuTimeLine.reverse();
+        burgerTimeLine.reverse();
       }
       open = !open;
     });
