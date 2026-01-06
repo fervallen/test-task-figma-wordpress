@@ -1,0 +1,17 @@
+/*
+Theme Name: Mounty
+Description: Test Task Landing Theme
+Version: 1.0
+*/
+
+@font-face {
+    font-family: 'TT Firs Neue';
+    src: url('assets/fonts/tt-firs-neue-700.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  
+  body {
+    font-family: 'TT Firs Neue', sans-serif;
+  }
+  
